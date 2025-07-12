@@ -1,42 +1,58 @@
-import re
 from playwright.sync_api import Page, expect
 import os
 
-def test_resistor_calculator(page: Page):
-    # Get the absolute path to the index.html file
+# Constants matching script.js
+SWATCH_HEIGHT = 40
+
+def get_color_index(wheel_id, color_name):
+    """Gets the index of a color in its respective wheel."""
+    if wheel_id in ['band1', 'band2']:
+        colors = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white']
+    elif wheel_id == 'band3':
+        colors = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white', 'gold', 'silver']
+    else: # band4
+        colors = ['brown', 'red', 'green', 'blue', 'violet', 'grey', 'gold', 'silver', 'none']
+    return colors.index(color_name)
+
+def test_resistor_calculator_scrolling(page: Page):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     file_path = os.path.join(dir_path, 'index.html')
-
     page.goto(f"file://{file_path}")
 
-    # Wait for elements to be populated by JS
-    page.wait_for_selector('#band4 option[value="none"]', state='attached')
+    # Wait for the wheels to be populated
+    page.wait_for_selector('#band1-wheel .color-swatch')
 
-    # Add a small delay to see the initial state in the video
+    # Allow time for initial value to be set and rendered
     page.wait_for_timeout(500)
 
-    # Initial state check (based on defaults in script.js)
-    expect(page.locator("#resistor-value")).to_have_text("57 KΩ ±5%")
+    # Initial state check
+    expect(page.locator("#resistor-value")).to_contain_text("57.0 KΩ ±5%")
 
-    # Change band 1 to Brown (1)
-    page.select_option("#band1", "brown")
-    page.wait_for_timeout(200) # pause for video
+    # --- Interaction Phase ---
+    # Scroll band 1 to Brown (index 1)
+    target_scroll_top_1 = get_color_index('band1', 'brown') * SWATCH_HEIGHT
+    page.locator('#band1-wheel').evaluate(f'el => el.scrollTo(0, {target_scroll_top_1})')
+    page.wait_for_timeout(300) # Wait for scroll and calculation
+    expect(page.locator("#resistor-value")).to_contain_text("17.0 KΩ ±5%")
 
-    # Change band 2 to Red (2)
-    page.select_option("#band2", "red")
-    page.wait_for_timeout(200) # pause for video
+    # Scroll band 2 to Red (index 2)
+    target_scroll_top_2 = get_color_index('band2', 'red') * SWATCH_HEIGHT
+    page.locator('#band2-wheel').evaluate(f'el => el.scrollTo(0, {target_scroll_top_2})')
+    page.wait_for_timeout(300)
+    expect(page.locator("#resistor-value")).to_contain_text("12.0 KΩ ±5%")
 
-    # Change multiplier to Yellow (10k)
-    page.select_option("#band3", "yellow")
-    page.wait_for_timeout(200) # pause for video
+    # Scroll band 3 (multiplier) to Yellow (index 4)
+    target_scroll_top_3 = get_color_index('band3', 'yellow') * SWATCH_HEIGHT
+    page.locator('#band3-wheel').evaluate(f'el => el.scrollTo(0, {target_scroll_top_3})')
+    page.wait_for_timeout(300)
+    expect(page.locator("#resistor-value")).to_contain_text("120 KΩ ±5%")
 
-    # Change tolerance to Red (2%)
-    page.select_option("#band4", "red")
-    page.wait_for_timeout(500) # final pause for video
+    # Scroll band 4 (tolerance) to Red (index 1)
+    target_scroll_top_4 = get_color_index('band4', 'red') * SWATCH_HEIGHT
+    page.locator('#band4-wheel').evaluate(f'el => el.scrollTo(0, {target_scroll_top_4})')
+    page.wait_for_timeout(500) # Final pause
 
-    # The test will now verify the final state
-    expect(page.locator("#resistor-value")).to_have_text("120 KΩ ±2%")
-    expect(page.locator("#preview-band4")).to_have_css("background-color", "rgb(255, 0, 0)") # red
+    # Final state check
+    expect(page.locator("#resistor-value")).to_contain_text("120 KΩ ±2%")
 
-# To run this test and record a video:
-# pytest test_resistor_calculator.py --video on
+# To run: pytest test_resistor_calculator.py --video on --screenshot on

@@ -7,57 +7,77 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .calculator-container {
     background-color: #1c1c1e;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 20px;
-    width: 350px;
+    width: 380px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .display-area {
     background-color: #000;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 8px;
+    padding: 15px;
     text-align: right;
-    margin-bottom: 20px;
-    font-size: 1.5em;
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-weight: 300;
 }
 
 .bands-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    position: relative;
 }
 
-.band-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.color-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #333;
-    border: 1px solid #555;
-    border-radius: 5px;
-    color: #fff;
-    padding: 5px;
+.band-picker {
+    height: 150px;
     width: 70px;
-    text-align: center;
-    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
 }
 
-.color-preview {
-    width: 60px;
-    height: 20px;
-    border: 2px solid #555;
-    border-radius: 3px;
+.picker-highlight {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    right: 5px;
+    height: 40px; /* Height of a swatch */
+    transform: translateY(-50%);
+    border: 2px solid #007aff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    pointer-events: none; /* Allows clicks to go through to the wheel */
 }
-/* Color previews will be set by JS */
-#preview-band1 { background-color: #000; }
-#preview-band2 { background-color: #000; }
-#preview-band3 { background-color: #000; }
-#preview-band4 { background-color: #000; }
+
+.picker-wheel {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.picker-wheel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+.color-swatch {
+    height: 40px;
+    width: 60px;
+    margin: 0 auto;
+    border-radius: 6px;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 2px #000;
+}
