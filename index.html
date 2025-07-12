@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Color Code Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
-
+    <div class="calculator-container">
+        <div class="display-area">
+            <span id="resistor-value">0 Ω ±0%</span>
+        </div>
+        <div class="bands-container">
+            <div class="band-selector">
+                <label for="band1">Band 1</label>
+                <select id="band1" class="color-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="color-preview" id="preview-band1"></div>
+            </div>
+            <div class="band-selector">
+                <label for="band2">Band 2</label>
+                <select id="band2" class="color-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="color-preview" id="preview-band2"></div>
+            </div>
+            <div class="band-selector">
+                <label for="band3">Multiplier</label>
+                <select id="band3" class="color-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="color-preview" id="preview-band3"></div>
+            </div>
+            <div class="band-selector">
+                <label for="band4">Tolerance</label>
+                <select id="band4" class="color-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="color-preview" id="preview-band4"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
