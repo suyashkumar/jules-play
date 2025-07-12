@@ -1,0 +1,66 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resistor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.band-group {
+    display: flex;
+    align-items: center;
+}
+
+.band {
+    width: 20px;
+    height: 60px;
+    border: 1px solid #000;
+}
+
+.band1 { background-color: black; }
+.band2 { background-color: black; }
+.band3 { background-color: black; }
+.band4 { background-color: gold; }
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.band-selectors {
+    display: flex;
+}
+
+.selector-group {
+    margin-right: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.result {
+    text-align: right;
+}

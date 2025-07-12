@@ -1,12 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Color Code Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
-
+    <div class="container">
+        <h1>Resistor Color Code Calculator</h1>
+        <div class="resistor">
+            <div class="band-group">
+                <div class="band band1"></div>
+                <div class="band band2"></div>
+                <div class="band band3"></div>
+                <div class="band band4"></div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="band-selectors">
+                <div class="selector-group">
+                    <label for="band1">1st Band</label>
+                    <select id="band1">
+                        <option value="0">Black</option>
+                        <option value="1">Brown</option>
+                        <option value="2">Red</option>
+                        <option value="3">Orange</option>
+                        <option value="4">Yellow</option>
+                        <option value="5">Green</option>
+                        <option value="6">Blue</option>
+                        <option value="7">Violet</option>
+                        <option value="8">Gray</option>
+                        <option value="9">White</option>
+                    </select>
+                </div>
+                <div class="selector-group">
+                    <label for="band2">2nd Band</label>
+                    <select id="band2">
+                        <option value="0">Black</option>
+                        <option value="1">Brown</option>
+                        <option value="2">Red</option>
+                        <option value="3">Orange</option>
+                        <option value="4">Yellow</option>
+                        <option value="5">Green</option>
+                        <option value="6">Blue</option>
+                        <option value="7">Violet</option>
+                        <option value="8">Gray</option>
+                        <option value="9">White</option>
+                    </select>
+                </div>
+                <div class="selector-group">
+                    <label for="multiplier">Multiplier</label>
+                    <select id="multiplier">
+                        <option value="1">Black (x1)</option>
+                        <option value="10">Brown (x10)</option>
+                        <option value="100">Red (x100)</option>
+                        <option value="1000">Orange (x1k)</option>
+                        <option value="10000">Yellow (x10k)</option>
+                        <option value="100000">Green (x100k)</option>
+                        <option value="1000000">Blue (x1M)</option>
+                        <option value="10000000">Violet (x10M)</option>
+                        <option value="0.1">Gold (x0.1)</option>
+                        <option value="0.01">Silver (x0.01)</option>
+                    </select>
+                </div>
+                <div class="selector-group">
+                    <label for="tolerance">Tolerance</label>
+                    <select id="tolerance">
+                        <option value="1">Brown (±1%)</option>
+                        <option value="2">Red (±2%)</option>
+                        <option value="0.5">Green (±0.5%)</option>
+                        <option value="0.25">Blue (±0.25%)</option>
+                        <option value="0.1">Violet (±0.1%)</option>
+                        <option value="0.05">Gray (±0.05%)</option>
+                        <option value="5">Gold (±5%)</option>
+                        <option value="10">Silver (±10%)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result">
+                <h2>Resistor Value</h2>
+                <p id="result-value">0 Ω ±0%</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
