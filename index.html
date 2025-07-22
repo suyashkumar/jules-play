@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hello, World!</title>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
-
+    <div class="calculator">
+        <div class="screen">
+            <div class="memory">MEMORY</div>
+            <div class="display">0</div>
+        </div>
+        <div class="buttons">
+            <table>
+                <tr>
+                    <td><button class="btn btn-mrc">MRC</button></td>
+                    <td><button class="btn btn-m-minus">M-</button></td>
+                    <td><button class="btn btn-m-plus">M+</button></td>
+                    <td><button class="btn btn-sqrt">√</button></td>
+                    <td><button class="btn btn-percent">%</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-arrow">→</button></td>
+                    <td><button class="btn btn-7">7</button></td>
+                    <td><button class="btn btn-8">8</button></td>
+                    <td><button class="btn btn-9">9</button></td>
+                    <td><button class="btn btn-divide">÷</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-ce">CE</button></td>
+                    <td><button class="btn btn-4">4</button></td>
+                    <td><button class="btn btn-5">5</button></td>
+                    <td><button class="btn btn-6">6</button></td>
+                    <td><button class="btn btn-multiply">×</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-ac">AC</button></td>
+                    <td><button class="btn btn-1">1</button></td>
+                    <td><button class="btn btn-2">2</button></td>
+                    <td><button class="btn btn-3">3</button></td>
+                    <td><button class="btn btn-subtract">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-0">0</button></td>
+                    <td><button class="btn btn-00">00</button></td>
+                    <td><button class="btn btn-dot">.</button></td>
+                    <td><button class="btn btn-equals">=</button></td>
+                    <td><button class="btn btn-add">+</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
