@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hello, World!</title>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
-
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="keys">
+            <button class="operator" data-action="clear">C</button>
+            <button class="operator" data-action="divide">/</button>
+            <button class="operator" data-action="multiply">*</button>
+            <button class="operator" data-action="subtract">-</button>
+            <button data-key="7">7</button>
+            <button data-key="8">8</button>
+            <button data-key="9">9</button>
+            <button class="operator" data-action="add">+</button>
+            <button data-key="4">4</button>
+            <button data-key="5">5</button>
+            <button data-key="6">6</button>
+            <button data-key="1">1</button>
+            <button data-key="2">2</button>
+            <button data-key="3">3</button>
+            <button data-key="0">0</button>
+            <button data-key="decimal">.</button>
+            <button class="equal" data-action="calculate">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
