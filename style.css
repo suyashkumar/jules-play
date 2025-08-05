@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fdf1f5;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.calculator {
+    background-color: #f9b4d0;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+    background-color: #c4c4c4;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    border: 2px solid #b0a8a8;
+}
+
+.display-text {
+    font-size: 48px;
+    color: #3a3a3a;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+}
+
+.btn-pink-light {
+    background-color: #f8dce6;
+    color: #a5678e;
+}
+
+.btn-pink-medium {
+    background-color: #f3a2c4;
+    color: #fff;
+}
+
+.btn-pink-dark {
+    background-color: #e85a9b;
+    color: #fff;
+}
