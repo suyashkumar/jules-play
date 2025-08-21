@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let memory = 0;
     let mrcPressedLast = false;
     let shouldResetScreen = false;
+    let lastClickedButton = null;
 
     const updateDisplay = () => {
         displayElement.innerText = currentOperand.length > 16 ? parseFloat(currentOperand).toExponential(9) : currentOperand;
@@ -64,6 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentOperand = '0';
                 previousOperand = '';
                 operation = null;
+                if (lastClickedButton) {
+                    lastClickedButton.classList.remove('clicked');
+                    lastClickedButton = null;
+                }
                 break;
             case 'CE':
                 currentOperand = '0';
@@ -96,6 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!e.target.matches('button')) return;
 
         const button = e.target;
+
+        if (lastClickedButton) {
+            lastClickedButton.classList.remove('clicked');
+        }
+        button.classList.add('clicked');
+        lastClickedButton = button;
+
         const value = button.innerText;
 
         if (!button.classList.contains('mrc')) {
