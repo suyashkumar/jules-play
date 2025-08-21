@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fce4ec;
+    font-family: 'Arial', sans-serif;
+}
+
+.calculator {
+    background-color: #f7b3c1;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-screen {
+    background-color: #d9e4d7;
+    border: 2px solid #aaa;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.memory-indicator {
+    font-size: 12px;
+    color: #555;
+    height: 14px;
+    text-align: left;
+    opacity: 0; /* Hidden by default */
+}
+
+.display {
+    font-size: 48px;
+    color: #333;
+    min-height: 50px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+}
+
+/* Lightest Pink Buttons */
+.button.number,
+.button.m-minus,
+.button.m-plus {
+    background-color: #fddde6;
+}
+
+/* Medium Pink Buttons */
+.button.dot,
+.button.arrow {
+    background-color: #f9a7c4;
+}
+
+/* Darkest Pink Buttons */
+.button.function,
+.button.operator {
+    background-color: #f283a5;
+    color: white;
+}
+
+/* Specific overrides for buttons that don't fit the general rule */
+.button.m-minus,
+.button.m-plus {
+    background-color: #f9a7c4; /* Medium Pink */
+    color: #333;
+}
+
+.button.mrc,
+.button.ce,
+.button.ac {
+    background-color: #f283a5; /* Darkest Pink */
+}
+
+.button.sqrt,
+.button.percent,
+.button.divide,
+.button.multiply,
+.button.subtract,
+.button.add,
+.button.equals {
+    background-color: #e8638b; /* Even darker pink for operators */
+    color: white;
+}
