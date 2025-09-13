@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="calculator">
+        <div class="display">
+            <div class="memory-indicator"></div>
+            <div class="display-text">0</div>
+        </div>
+        <div class="buttons">
+            <button class="button function" data-action="mrc">MRC</button>
+            <button class="button function" data-action="m-minus">M-</button>
+            <button class="button function" data-action="m-plus">M+</button>
+            <button class="button function" data-action="sqrt">√</button>
+            <button class="button function" data-action="percent">%</button>
 
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
+            <button class="button function" data-action="backspace">→</button>
+            <button class="button number" data-number="7">7</button>
+            <button class="button number" data-number="8">8</button>
+            <button class="button number" data-number="9">9</button>
+            <button class="button operator" data-operator="divide">÷</button>
 
+            <button class="button function" data-action="clear-entry">CE</button>
+            <button class="button number" data-number="4">4</button>
+            <button class="button number" data-number="5">5</button>
+            <button class="button number" data-number="6">6</button>
+            <button class="button operator" data-operator="multiply">x</button>
+
+            <button class="button function" data-action="all-clear">AC</button>
+            <button class="button number" data-number="1">1</button>
+            <button class="button number" data-number="2">2</button>
+            <button class="button number" data-number="3">3</button>
+            <button class="button operator" data-operator="subtract">-</button>
+
+            <button class="button number" data-number="0">0</button>
+            <button class="button number" data-number="00">00</button>
+            <button class="button" data-action="decimal">.</button>
+            <button class="button operator" data-action="equals">=</button>
+            <button class="button operator" data-operator="add">+</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
