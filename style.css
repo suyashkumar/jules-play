@@ -1,0 +1,115 @@
+:root {
+    --bg-color: #fdf1f7;
+    --calculator-bg: #f9cfe5;
+    --display-bg: #dcdcdc;
+    --display-text-color: #3a3a3a;
+    --light-pink: #fbeff5;
+    --medium-pink: #f295c0;
+    --dark-pink: #de79a9;
+    --darker-pink: #d45d92;
+    --button-text-color: #3a3a3a;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.calculator {
+    background-color: var(--calculator-bg);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 380px;
+}
+
+.display {
+    background-color: var(--display-bg);
+    border: 2px solid #f8b9d9;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.memory-indicator {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    height: 1.2rem;
+    text-align: left;
+    visibility: hidden;
+}
+
+.display-text {
+    font-family: 'Helvetica Neue', sans-serif; /* Reverted to system font */
+    font-size: 3rem;
+    color: var(--display-text-color);
+    font-weight: bold;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 45px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.button {
+    height: 65px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-bottom-width: 4px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    color: var(--button-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:active {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Number buttons */
+.button[data-number],
+.button[data-action="decimal"] {
+    background-color: var(--light-pink);
+    border-color: #e0d0d8;
+}
+
+/* Operator buttons */
+.button.operator {
+    background-color: var(--medium-pink);
+    border-color: #d88ab0;
+}
+
+/* Function buttons */
+.button[data-action="mrc"],
+.button[data-action="m-minus"],
+.button[data-action="m-plus"],
+.button[data-action="sqrt"],
+.button[data-action="percent"] {
+    background-color: var(--dark-pink);
+    border-color: #c96c99;
+}
+
+.button[data-action="backspace"],
+.button[data-action="clear-entry"],
+.button[data-action="all-clear"] {
+    background-color: var(--darker-pink);
+    border-color: #bd5384;
+}
