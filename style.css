@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #fdf1f7;
-    --calculator-bg: #f9cfe5;
+    --bg-color: #f3f0ff;
+    --calculator-bg: #e0d7ff;
     --display-bg: #dcdcdc;
     --display-text-color: #3a3a3a;
-    --light-pink: #fbeff5;
-    --medium-pink: #f295c0;
-    --dark-pink: #de79a9;
-    --darker-pink: #d45d92;
+    --light-purple: #e9e4ff;
+    --medium-purple: #c3a9ff;
+    --dark-purple: #a37dff;
+    --darker-purple: #8b5cf6;
     --button-text-color: #3a3a3a;
 }
 
@@ -30,7 +30,7 @@ body {
 
 .display {
     background-color: var(--display-bg);
-    border: 2px solid #f8b9d9;
+    border: 2px solid var(--calculator-bg);
     border-radius: 15px;
     padding: 15px 20px;
     margin-bottom: 20px;
@@ -48,7 +48,7 @@ body {
 }
 
 .display-text {
-    font-family: 'Helvetica Neue', sans-serif; /* Reverted to system font */
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 3rem;
     color: var(--display-text-color);
     font-weight: bold;
@@ -87,14 +87,14 @@ body {
 /* Number buttons */
 .button[data-number],
 .button[data-action="decimal"] {
-    background-color: var(--light-pink);
-    border-color: #e0d0d8;
+    background-color: var(--light-purple);
+    border-color: #d0c9e8;
 }
 
 /* Operator buttons */
 .button.operator {
-    background-color: var(--medium-pink);
-    border-color: #d88ab0;
+    background-color: var(--medium-purple);
+    border-color: #a98ee0;
 }
 
 /* Function buttons */
@@ -103,13 +103,13 @@ body {
 .button[data-action="m-plus"],
 .button[data-action="sqrt"],
 .button[data-action="percent"] {
-    background-color: var(--dark-pink);
-    border-color: #c96c99;
+    background-color: var(--dark-purple);
+    border-color: #8a6ad9;
 }
 
 .button[data-action="backspace"],
 .button[data-action="clear-entry"],
 .button[data-action="all-clear"] {
-    background-color: var(--darker-pink);
-    border-color: #bd5384;
+    background-color: var(--darker-purple);
+    border-color: #7449d9;
 }
