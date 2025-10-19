@@ -3,112 +3,89 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    background-color: #fdeaf1; /* Lighter pink background */
+    margin: 0;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
 }
 
 .calculator {
-    background-color: #f7b3c1;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.calculator-screen {
-    background-color: #d9e4d7;
-    border: 2px solid #aaa;
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    text-align: right;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.memory-indicator {
-    font-size: 12px;
-    color: #555;
-    height: 14px;
-    text-align: left;
-    opacity: 0; /* Hidden by default */
+    background-color: #f7b2d2; /* Main calculator body color */
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 10px 10px rgba(0,0,0,0.15);
+    width: 350px;
 }
 
 .display {
-    font-size: 48px;
-    color: #333;
-    min-height: 50px;
-    word-wrap: break-word;
-    word-break: break-all;
+    background-color: #e0e0e0; /* Greyish display background */
+    border: 5px solid #d1a3b8;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: right;
+    position: relative;
 }
 
-.calculator-buttons {
+.memory-indicator {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+}
+
+#result {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 52px;
+    color: #333;
+    text-align: right;
+    font-family: 'Segment7', sans-serif; /* A digital-style font */
+}
+
+.buttons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
 }
 
-.button {
+.btn {
+    border: 2px solid rgba(0,0,0,0.05);
+    border-bottom: 5px solid rgba(0,0,0,0.15);
+    border-radius: 15px;
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 22px;
     color: #333;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
+    transition: all 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
-.button:active {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transform: translateY(2px);
+.btn:active {
+    transform: translateY(3px);
+    border-bottom-width: 2px;
+    filter: brightness(95%);
 }
 
-/* Lightest Pink Buttons */
-.button.number,
-.button.m-minus,
-.button.m-plus {
-    background-color: #fddde6;
-}
-
-/* Medium Pink Buttons */
-.button.dot,
-.button.arrow {
-    background-color: #f9a7c4;
-}
-
-/* Darkest Pink Buttons */
-.button.function,
-.button.operator {
-    background-color: #f283a5;
+/* Color Palette */
+.btn.operator, .btn.memory {
     color: white;
 }
 
-/* Specific overrides for buttons that don't fit the general rule */
-.button.m-minus,
-.button.m-plus {
-    background-color: #f9a7c4; /* Medium Pink */
-    color: #333;
-}
+.btn.btn-color-1 { background-color: #e57373; } /* MRC, M-, M+, ->, =, + */
+.btn.btn-color-2 { background-color: #f06292; } /* sqrt, %, /, *, - */
+.btn.btn-color-3 { background-color: #f48fb1; } /* 7, 8, 9 */
+.btn.btn-color-4 { background-color: #f8bbd0; } /* 4, 5, 6 */
+.btn.btn-color-5 { background-color: #fce4ec; } /* 1, 2, 3 */
+.btn.btn-color-6 { background-color: #ffffff; } /* 0, . */
 
-.button.mrc,
-.button.ce,
-.button.ac {
-    background-color: #f283a5; /* Darkest Pink */
-}
-
-.button.sqrt,
-.button.percent,
-.button.divide,
-.button.multiply,
-.button.subtract,
-.button.add,
-.button.equals {
-    background-color: #e8638b; /* Even darker pink for operators */
+.btn.btn-accent { /* AC, CE */
+    background-color: #ec407a;
     color: white;
-}
-
-.button.clicked {
-    box-shadow: inset 0 3px 5px rgba(0,0,0,0.3);
-    transform: translateY(1px);
 }

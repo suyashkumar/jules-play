@@ -5,43 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pink Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="calculator">
-        <div class="calculator-screen">
+        <div class="display">
             <div class="memory-indicator">MEMORY</div>
-            <div class="display">0</div>
+            <input type="text" id="result" value="0" disabled>
         </div>
-        <div class="calculator-buttons">
-            <button class="button function mrc">MRC</button>
-            <button class="button function m-minus">M-</button>
-            <button class="button function m-plus">M+</button>
-            <button class="button operator sqrt">√</button>
-            <button class="button operator percent">%</button>
+        <div class="buttons">
+            <button class="btn memory btn-color-1">MRC</button>
+            <button class="btn memory btn-color-1">M-</button>
+            <button class="btn memory btn-color-1">M+</button>
+            <button class="btn operator btn-color-2">√</button>
+            <button class="btn operator btn-color-2">%</button>
 
-            <button class="button function arrow">→</button>
-            <button class="button number">7</button>
-            <button class="button number">8</button>
-            <button class="button number">9</button>
-            <button class="button operator divide">÷</button>
+            <button class="btn operator btn-color-1">→</button>
+            <button class="btn number btn-color-3">7</button>
+            <button class="btn number btn-color-3">8</button>
+            <button class="btn number btn-color-3">9</button>
+            <button class="btn operator btn-color-2">÷</button>
 
-            <button class="button function ce">CE</button>
-            <button class="button number">4</button>
-            <button class="button number">5</button>
-            <button class="button number">6</button>
-            <button class="button operator multiply">×</button>
+            <button class="btn clear btn-accent">CE</button>
+            <button class="btn number btn-color-4">4</button>
+            <button class="btn number btn-color-4">5</button>
+            <button class="btn number btn-color-4">6</button>
+            <button class="btn operator btn-color-2">×</button>
 
-            <button class="button function ac">AC</button>
-            <button class="button number">1</button>
-            <button class="button number">2</button>
-            <button class="button number">3</button>
-            <button class="button operator subtract">−</button>
+            <button class="btn clear btn-accent">AC</button>
+            <button class="btn number btn-color-5">1</button>
+            <button class="btn number btn-color-5">2</button>
+            <button class="btn number btn-color-5">3</button>
+            <button class="btn operator btn-color-2">-</button>
 
-            <button class="button number zero">0</button>
-            <button class="button number double-zero">00</button>
-            <button class="button number dot">.</button>
-            <button class="button operator equals">=</button>
-            <button class="button operator add">+</button>
+            <button class="btn number btn-color-6">0</button>
+            <button class="btn decimal btn-color-6">.</button>
+            <button class="btn operator btn-color-1">=</button>
+            <button class="btn operator btn-color-1">+</button>
         </div>
     </div>
     <script src="script.js"></script>

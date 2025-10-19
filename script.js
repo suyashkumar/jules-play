@@ -1,139 +1,105 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const displayElement = document.querySelector('.display');
-    const memoryIndicatorElement = document.querySelector('.memory-indicator');
-    const buttons = document.querySelector('.calculator-buttons');
+    const resultInput = document.getElementById('result');
+    const buttons = document.querySelector('.buttons');
 
-    let currentOperand = '0';
-    let previousOperand = '';
-    let operation = null;
+    let currentInput = '0';
+    let operator = '';
+    let previousInput = '';
     let memory = 0;
-    let mrcPressedLast = false;
-    let shouldResetScreen = false;
-    let lastClickedButton = null;
+    let memoryRecall = false;
 
     const updateDisplay = () => {
-        displayElement.innerText = currentOperand.length > 16 ? parseFloat(currentOperand).toExponential(9) : currentOperand;
-        memoryIndicatorElement.style.opacity = memory !== 0 ? '1' : '0';
+        resultInput.value = currentInput;
     };
 
     const calculate = () => {
         let result;
-        const prev = parseFloat(previousOperand);
-        const current = parseFloat(currentOperand);
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+
         if (isNaN(prev) || isNaN(current)) return;
 
-        switch (operation) {
-            case '+': result = prev + current; break;
-            case '-': result = prev - current; break;
-            case '×': result = prev * current; break;
-            case '÷': result = prev / current; break;
-            default: return;
+        switch (operator) {
+            case '+':
+                result = prev + current;
+                break;
+            case '-':
+                result = prev - current;
+                break;
+            case '×':
+                result = prev * current;
+                break;
+            case '÷':
+                result = prev / current;
+                break;
+            default:
+                return;
         }
-        currentOperand = String(result);
-        operation = null;
-        previousOperand = '';
-    };
-
-    const handleOperator = (button) => {
-        const operator = button.innerText;
-        if (button.classList.contains('equals')) {
-            if (operation && previousOperand !== '') {
-                calculate();
-                shouldResetScreen = true;
-            }
-        } else if (button.classList.contains('sqrt')) {
-            currentOperand = String(Math.sqrt(parseFloat(currentOperand)));
-            shouldResetScreen = true;
-        } else if (button.classList.contains('percent')) {
-            currentOperand = String(parseFloat(currentOperand) / 100);
-            shouldResetScreen = true;
-        } else { // +, -, ×, ÷
-            if (currentOperand === '' && previousOperand === '') return;
-            if (operation && previousOperand !== '') {
-                calculate();
-            }
-            operation = operator;
-            previousOperand = currentOperand;
-            shouldResetScreen = true;
-        }
-    };
-
-    const handleFunction = (button) => {
-        const func = button.innerText;
-        switch (func) {
-            case 'AC':
-                currentOperand = '0';
-                previousOperand = '';
-                operation = null;
-                if (lastClickedButton) {
-                    lastClickedButton.classList.remove('clicked');
-                    lastClickedButton = null;
-                }
-                break;
-            case 'CE':
-                currentOperand = '0';
-                break;
-            case '→':
-                currentOperand = currentOperand.slice(0, -1) || '0';
-                break;
-            case 'M+':
-                memory += parseFloat(currentOperand);
-                shouldResetScreen = true;
-                break;
-            case 'M-':
-                memory -= parseFloat(currentOperand);
-                shouldResetScreen = true;
-                break;
-            case 'MRC':
-                if (mrcPressedLast) {
-                    memory = 0;
-                    mrcPressedLast = false;
-                } else {
-                    currentOperand = String(memory);
-                    shouldResetScreen = true;
-                    mrcPressedLast = true;
-                }
-                break;
-        }
+        currentInput = result.toString();
+        operator = '';
+        previousInput = '';
     };
 
     buttons.addEventListener('click', (e) => {
         if (!e.target.matches('button')) return;
 
         const button = e.target;
+        const action = button.innerText;
+        const classList = button.classList;
 
-        if (lastClickedButton) {
-            lastClickedButton.classList.remove('clicked');
-        }
-        button.classList.add('clicked');
-        lastClickedButton = button;
-
-        const value = button.innerText;
-
-        if (!button.classList.contains('mrc')) {
-            mrcPressedLast = false;
+        if (classList.contains('number')) {
+            if (currentInput === '0' || memoryRecall) {
+                currentInput = '';
+                memoryRecall = false;
+            }
+            currentInput += action;
         }
 
-        if ((button.classList.contains('number') && !button.classList.contains('dot'))) {
-             if (value === '00' && currentOperand === '0') {
-                // do nothing
-             } else if (shouldResetScreen || currentOperand === '0') {
-                currentOperand = value;
-                shouldResetScreen = false;
+        if (classList.contains('decimal')) {
+            if (!currentInput.includes('.')) {
+                currentInput += '.';
+            }
+        }
+
+        if (classList.contains('operator')) {
+            if (action === '√') {
+                currentInput = Math.sqrt(parseFloat(currentInput)).toString();
+            } else if (action === '%') {
+                currentInput = (parseFloat(currentInput) / 100).toString();
+            } else if (action === '->') {
+                currentInput = currentInput.slice(0, -1) || '0';
+            } else if (action === '=') {
+                calculate();
             } else {
-                currentOperand += value;
+                if (operator) {
+                    calculate();
+                }
+                previousInput = currentInput;
+                currentInput = '0';
+                operator = action;
             }
-        } else if (button.classList.contains('dot')) {
-            if (shouldResetScreen) {
-                currentOperand = '0.';
-                shouldResetScreen = false;
-            } else if (!currentOperand.includes('.')) {
-                currentOperand += '.';
+        }
+
+        if (classList.contains('clear')) {
+            if (action === 'AC') {
+                currentInput = '0';
+                operator = '';
+                previousInput = '';
+            } else if (action === 'CE') {
+                currentInput = '0';
             }
-        } else if (button.classList.contains('operator')) {
-            handleOperator(button);
-        } else if (button.classList.contains('function')) {
-            handleFunction(button);
+        }
+
+        if (classList.contains('memory')) {
+            memoryRecall = false;
+            if (action === 'M+') {
+                memory += parseFloat(currentInput);
+            } else if (action === 'M-') {
+                memory -= parseFloat(currentInput);
+            } else if (action === 'MRC') {
+                currentInput = memory.toString();
+                memoryRecall = true;
+            }
         }
 
         updateDisplay();
