@@ -1,0 +1,99 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fce4ec; /* Light pink background */
+    font-family: sans-serif;
+}
+
+.calculator {
+    width: 300px;
+    background-color: #f8bbd0; /* Main pink color */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+    background-color: #e1bee7; /* Lighter pink for the display */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.memory-indicator {
+    font-size: 12px;
+    color: #880e4f; /* Darker pink for text */
+    height: 15px;
+}
+
+.screen {
+    font-size: 40px;
+    color: #4a148c; /* Dark purple for the numbers */
+    min-height: 50px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #f48fb1; /* Button color */
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #f06292; /* Darker pink on hover */
+}
+
+.function, .operator {
+    background-color: #ec407a; /* Darker pink for function buttons */
+}
+
+.function:hover, .operator:hover {
+    background-color: #e91e63; /* Even darker pink on hover */
+}
+
+.clear, .all-clear {
+    background-color: #d81b60; /* Darkest pink for clear buttons */
+    color: #fff;
+}
+
+.clear:hover, .all-clear:hover {
+    background-color: #c2185b;
+}
+
+.equal {
+    background-color: #ad1457; /* Another shade of pink */
+}
+
+.equal:hover {
+    background-color: #880e4f;
+}
+
+.number, .decimal {
+    background-color: #f48fb1; /* Lighter pink for numbers */
+}
+
+.number:hover, .decimal:hover {
+    background-color: #f06292;
+}
+
+.backspace {
+    font-size: 24px;
+}
+
+.mrc, .m-minus, .m-plus, .backspace, .clear, .all-clear {
+    font-size: 16px;
+}
