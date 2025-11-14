@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: sans-serif;
+}
+
+.calculator {
+    background-color: #fcd1e3; /* Light pink body */
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -5px 10px rgba(0,0,0,0.05), 0 0 25px rgba(255, 105, 180, 0.6);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.display-container {
+    background-color: #e0e0e0; /* Placeholder for LCD background */
+    background: linear-gradient(180deg, #9fa8a3 0%, #8c9890 100%); /* LCD greenish-grey */
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    border: 4px solid #eabccd; /* Darker pink border around screen */
+}
+
+.display-label {
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+.display-screen {
+    font-family: 'Courier New', Courier, monospace; /* Monospace for LCD look */
+    font-size: 36px;
+    text-align: right;
+    color: #222;
+    letter-spacing: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 40px;
+    line-height: 40px;
+}
+
+/* Custom LCD Font Attempt (using transforms/borders if needed, but monospace is safe for now) */
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    justify-items: center;
+}
+
+.btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #c75c83; /* Darker pink text */
+    cursor: pointer;
+    background: linear-gradient(145deg, #ffe6f2, #f0cce0);
+    box-shadow: 3px 3px 6px #d9acc5, -3px -3px 6px #fff5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    box-shadow: inset 3px 3px 6px #d9acc5, inset -3px -3px 6px #fff5ff;
+    transform: translateY(2px);
+}
+
+/* Specific button styling based on image cues */
+
+/* Top row - slightly different shade? */
+.btn.function {
+    background: linear-gradient(145deg, #fbcfe2, #eebad2);
+}
+
+/* Action buttons (CE, AC) - Darker pink */
+.btn.action {
+    background: linear-gradient(145deg, #f47ea8, #e06b95);
+    color: white; /* White text for contrast */
+    box-shadow: 3px 3px 6px #c96286, -3px -3px 6px #ffaed0;
+}
+.btn.action:active {
+     box-shadow: inset 3px 3px 6px #c96286, inset -3px -3px 6px #ffaed0;
+}
+
+/* Regular numbers - Light pink */
+.btn.number {
+    background: linear-gradient(145deg, #ffe6f2, #f5d6e8);
+}
+
+/* Operators (+, -, *, /) - similar to numbers but maybe distinct? Image shows them similar to numbers */
+.btn.operator {
+    background: linear-gradient(145deg, #ffe6f2, #f5d6e8);
+}
+
+/* Equals button - same as numbers in image */
+.btn.equal {
+    background: linear-gradient(145deg, #ffe6f2, #f5d6e8);
+}
+
+/* Adjust font sizes */
+.btn[data-value="+"],
+.btn[data-value="-"],
+.btn[data-value="*"],
+.btn[data-value="/"],
+.btn[data-action="calculate"] {
+    font-size: 20px;
+}
+
+.btn[data-action="ac"], .btn[data-action="ce"] {
+    font-size: 14px;
+}
