@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="screen" readonly value="0">
+        </div>
+        <div class="keys">
+            <button class="key action" data-action="clear">AC</button>
+            <button class="key action" data-action="delete">C</button>
+            <button class="key operator" data-action="divide">/</button>
+            <button class="key operator" data-action="multiply">x</button>
 
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
+            <button class="key number" data-num="7">7</button>
+            <button class="key number" data-num="8">8</button>
+            <button class="key number" data-num="9">9</button>
+            <button class="key operator" data-action="subtract">-</button>
 
+            <button class="key number" data-num="4">4</button>
+            <button class="key number" data-num="5">5</button>
+            <button class="key number" data-num="6">6</button>
+            <button class="key operator" data-action="add">+</button>
+
+            <button class="key number" data-num="1">1</button>
+            <button class="key number" data-num="2">2</button>
+            <button class="key number" data-num="3">3</button>
+            <button class="key operator equals" data-action="calculate">=</button>
+
+            <button class="key number zero" data-num="0">0</button>
+            <button class="key number" data-action="decimal">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

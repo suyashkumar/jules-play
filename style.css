@@ -1,0 +1,107 @@
+/* Reset and Fonts */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffe6eb; /* Light pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #ffb3c1; /* Darker pink for calculator body */
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 320px;
+}
+
+.display {
+    margin-bottom: 20px;
+}
+
+#screen {
+    width: 100%;
+    height: 60px;
+    background-color: #fff0f3;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    text-align: right;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color: #590d22;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.key {
+    height: 60px;
+    border: none;
+    border-radius: 50%; /* Cylindrical/Round */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #ffccd5;
+    color: #800f2f;
+    /* 3D Effect */
+    box-shadow: 0 5px 0 #c9184a, 0 5px 10px rgba(0,0,0,0.2);
+    transition: all 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Specific Styles */
+.key.operator {
+    background-color: #ff8fa3;
+    color: #fff;
+    box-shadow: 0 5px 0 #e01e37, 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.key.action {
+    background-color: #ff4d6d;
+    color: #fff;
+    box-shadow: 0 5px 0 #a4133c, 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.key.equals {
+    grid-row: span 2;
+    height: 100%;
+    border-radius: 30px; /* Pill shape for tall button */
+    background-color: #c9184a;
+    color: #fff;
+    box-shadow: 0 5px 0 #800f2f, 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.key.zero {
+    grid-column: span 2;
+    width: 100%;
+    border-radius: 30px; /* Pill shape for wide button */
+}
+
+/* Button Press Effect (Active State) */
+.key:active, .key.pressed {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 #c9184a, inset 0 2px 5px rgba(0,0,0,0.2); /* Remove bottom shadow to simulate pressing down */
+}
+
+.key.operator:active, .key.operator.pressed {
+    box-shadow: 0 0 0 #e01e37, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.key.action:active, .key.action.pressed {
+    box-shadow: 0 0 0 #a4133c, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.key.equals:active, .key.equals.pressed {
+    box-shadow: 0 0 0 #800f2f, inset 0 2px 5px rgba(0,0,0,0.2);
+}
