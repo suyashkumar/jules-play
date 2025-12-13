@@ -1,0 +1,150 @@
+:root {
+    --bg-color: #ffffff;
+    --calc-body-color: #F8C8DC; /* Light Pink */
+    --calc-body-shadow: #dcb0c0;
+
+    --screen-bg: #8b968d; /* LCDish grey-green */
+    --screen-text: #222;
+
+    --btn-color-light: #FFD1DC; /* Pastel Pink */
+    --btn-shadow-light: #dbaeb8;
+
+    --btn-color-dark: #FF69B4; /* Hot Pink for AC/CE */
+    --btn-shadow-dark: #d1478c;
+
+    --text-color: #555;
+    --text-color-dark-btn: #883355;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.calculator-container {
+    padding: 20px;
+}
+
+.calculator-body {
+    background-color: var(--calc-body-color);
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow:
+        10px 10px 20px rgba(0,0,0,0.1),
+        -5px -5px 15px rgba(255,255,255,0.5),
+        inset -2px -2px 5px rgba(0,0,0,0.05);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.display-container {
+    background-color: var(--screen-bg);
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+    position: relative;
+}
+
+.memory-indicator {
+    font-size: 0.8rem;
+    color: var(--screen-text);
+    text-align: center;
+    visibility: hidden; /* Hidden by default */
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+.memory-indicator.visible {
+    visibility: visible;
+}
+
+.display-screen {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    color: var(--screen-text);
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip; /* Or ellipsis if preferred, but calculators usually clip left */
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 3D Effect for Light Buttons */
+.btn-num, .btn-op, .btn-mem {
+    background-color: var(--btn-color-light);
+    box-shadow:
+        0 6px 0 var(--btn-shadow-light),
+        0 6px 5px rgba(0,0,0,0.2);
+    color: #8a5a6a;
+}
+
+.btn-num:active, .btn-op:active, .btn-mem:active {
+    box-shadow:
+        0 2px 0 var(--btn-shadow-light),
+        0 2px 2px rgba(0,0,0,0.2);
+    transform: translateY(4px);
+}
+
+/* 3D Effect for Dark Buttons (AC/CE) */
+.btn-action-ac, .btn-action-ce {
+    background-color: var(--btn-color-dark);
+    box-shadow:
+        0 6px 0 var(--btn-shadow-dark),
+        0 6px 5px rgba(0,0,0,0.2);
+    color: #a33; /* Darker text for contrast on darker button? Or maybe lighter? */
+    color: rgba(0,0,0,0.3); /* Engraved look maybe? */
+    font-weight: bold;
+}
+
+/* Adjust text color for dark buttons to match image style usually being engraved or printed */
+.btn-action-ac, .btn-action-ce {
+    color: #902e55;
+}
+
+
+.btn-action-ac:active, .btn-action-ce:active {
+    box-shadow:
+        0 2px 0 var(--btn-shadow-dark),
+        0 2px 2px rgba(0,0,0,0.2);
+    transform: translateY(4px);
+}
+
+/* Specific styling to match the image */
+.btn-mem, .btn-op {
+    /* Maybe slightly different shade? sticking to light for now */
+}
