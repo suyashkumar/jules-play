@@ -1,0 +1,118 @@
+body {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.calculator-body {
+    background-color: #f2c1d9; /* Richer Pink Body */
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.15),
+        inset 0 -5px 15px rgba(0,0,0,0.05),
+        inset 0 2px 5px rgba(255,255,255,0.4);
+    width: 340px;
+}
+
+.display-container {
+    background-color: #8c9697; /* Grey LCD background */
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);
+    position: relative;
+    border: 1px solid #777;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.memory-indicator {
+    font-size: 0.7rem;
+    color: #111;
+    text-align: center;
+    opacity: 0; /* Hidden by default */
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.memory-indicator.visible {
+    opacity: 1;
+}
+
+.display-screen {
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-size: 2.8rem;
+    color: #1a1a1a;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px 12px; /* Row gap, Col gap */
+    padding: 5px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #904055; /* Dark pink/red text */
+    cursor: pointer;
+    background-color: #fdeaf2; /* Light pink button face */
+    box-shadow:
+        0 10px 0 #deaec1, /* Taller shadow for cylinder effect */
+        0 12px 6px rgba(0,0,0,0.2); /* Drop shadow */
+    transition: transform 0.1s, box-shadow 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    top: -5px; /* Offset to account for shadow height in grid */
+}
+
+.btn:active {
+    transform: translateY(10px);
+    box-shadow:
+        0 0 0 #deaec1,
+        0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Specific colors for hot pink buttons (CE, AC) */
+.special-pink {
+    background-color: #eb5e9c; /* Hot pink button face */
+    color: #962045; /* Darker text */
+    box-shadow:
+        0 10px 0 #bf386e, /* Darker side */
+        0 12px 6px rgba(0,0,0,0.2);
+}
+
+.special-pink:active {
+    box-shadow:
+        0 0 0 #bf386e,
+        0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Adjust font sizes */
+.btn[data-action="memory-recall"],
+.btn[data-action="memory-minus"],
+.btn[data-action="memory-plus"] {
+    font-size: 0.9rem;
+}
