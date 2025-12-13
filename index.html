@@ -1,12 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importing a font that looks somewhat like the keys -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Importing a digital font for display -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="calculator-container">
+        <div class="calculator-body">
+            <div class="display-container">
+                <div class="memory-indicator" id="memory-indicator">MEMORY</div>
+                <div class="display-screen" id="display">0</div>
+            </div>
+            <div class="buttons-grid">
+                <!-- Row 1 -->
+                <button class="btn func" data-action="memory-recall">MRC</button>
+                <button class="btn func" data-action="memory-minus">M-</button>
+                <button class="btn func" data-action="memory-plus">M+</button>
+                <button class="btn func" data-action="sqrt">√</button>
+                <button class="btn func" data-action="percent">%</button>
 
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
+                <!-- Row 2 -->
+                <button class="btn func" data-action="backspace">→</button>
+                <button class="btn num" data-value="7">7</button>
+                <button class="btn num" data-value="8">8</button>
+                <button class="btn num" data-value="9">9</button>
+                <button class="btn op" data-action="divide">÷</button>
 
+                <!-- Row 3 -->
+                <button class="btn special-pink" data-action="clear-entry">CE</button>
+                <button class="btn num" data-value="4">4</button>
+                <button class="btn num" data-value="5">5</button>
+                <button class="btn num" data-value="6">6</button>
+                <button class="btn op" data-action="multiply">×</button>
+
+                <!-- Row 4 -->
+                <button class="btn special-pink" data-action="all-clear">AC</button>
+                <button class="btn num" data-value="1">1</button>
+                <button class="btn num" data-value="2">2</button>
+                <button class="btn num" data-value="3">3</button>
+                <button class="btn op" data-action="subtract">-</button>
+
+                <!-- Row 5 -->
+                <button class="btn num" data-value="0">0</button>
+                <button class="btn num" data-value="00">00</button>
+                <button class="btn num" data-value=".">.</button>
+                <button class="btn op" data-action="equals">=</button>
+                <button class="btn op" data-action="add">+</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
