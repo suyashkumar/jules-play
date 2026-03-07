@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffe6f2; /* Light pink background */
+}
+
+.calculator {
+    background-color: #ffb3d9; /* Darker pink for calculator body */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    width: 320px;
+}
+
+.display {
+    background-color: #fff0f5; /* Lavender blush display */
+    color: #cc0066; /* Deep pink text */
+    font-size: 2.5rem;
+    text-align: right;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 80px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background-color: #ffcce6;
+    color: #cc0066;
+    font-size: 1.5rem;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(255, 105, 180, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 3px rgba(255, 105, 180, 0.2);
+}
+
+.btn:hover {
+    background-color: #ff99cc;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.operator {
+    background-color: #ff80bf;
+    color: white;
+}
+
+.operator:hover {
+    background-color: #ff66b3;
+}
+
+.clear {
+    background-color: #ff4d94;
+    color: white;
+}
+
+.clear:hover {
+    background-color: #ff3385;
+}
+
+.delete {
+    background-color: #ff66b3;
+    color: white;
+}
+
+.delete:hover {
+    background-color: #ff4d94;
+}
+
+.equals {
+    background-color: #e60073;
+    color: white;
+}
+
+.equals:hover {
+    background-color: #cc0066;
+}
