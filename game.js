@@ -215,8 +215,6 @@ function drawShip(x, y, a, color) {
 
 function update() {
     // Process input
-    var blinkOn = ship.blinkNum % 2 == 0;
-
     if (!ship.dead && !ship.explodeTime) {
         if (keys['ArrowLeft']) {
             ship.rot = TURN_SPEED / 180 * Math.PI / FPS;
@@ -268,16 +266,24 @@ function update() {
 
     // draw the triangular ship
     if (!ship.dead && !ship.explodeTime) {
-        if (blinkOn) {
-            drawShip(ship.x, ship.y, ship.a, 'white');
-        }
+        drawShip(ship.x, ship.y, ship.a, 'white');
 
-        // handle blinking
+        // handle blinking (invulnerability shield)
         if (ship.blinkNum > 0) {
             ship.blinkTime--;
             if (ship.blinkTime == 0) {
                 ship.blinkTime = Math.ceil(SHIP_BLINK_DUR * FPS);
                 ship.blinkNum--;
+            }
+
+            // Draw invulnerability shield
+            var blinkOn = ship.blinkNum % 2 == 0;
+            if (blinkOn) {
+                ctx.strokeStyle = "cyan";
+                ctx.lineWidth = SHIP_SIZE / 20;
+                ctx.beginPath();
+                ctx.arc(ship.x, ship.y, ship.r * 1.4, 0, Math.PI * 2, false);
+                ctx.stroke();
             }
         }
     }
