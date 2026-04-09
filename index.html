@@ -1,12 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello, World!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cool Annotations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-pink: #ff69b4;
+    --dark-pink: #c71585;
+    --light-pink: #ffb6c1;
+    --bg-color: #fff0f5;
+    --text-color: #333;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: var(--dark-pink);
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .btn-3d {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary-pink);
+    border: none;
+    border-radius: 50px; /* Makes it cylindrical */
+    padding: 15px 30px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 8px 0 var(--dark-pink), 0 15px 20px rgba(0,0,0,0.2);
+    transition: all 0.1s;
+    text-transform: uppercase;
+  }
+
+  .btn-3d:active {
+    box-shadow: 0 2px 0 var(--dark-pink), 0 5px 10px rgba(0,0,0,0.2);
+    transform: translateY(6px);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h1 {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  p {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  p:nth-of-type(1) { animation-delay: 0.2s; }
+  p:nth-of-type(2) { animation-delay: 0.4s; }
+  p:nth-of-type(3) { animation-delay: 0.6s; }
+
+  .button-container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.8s;
+  }
+</style>
 </head>
 <body>
 
-<h1>Hello, World!</h1>
-<p>This is a simple HTML page.</p>
+<h1>Welcome to <span id="a1">Cool Annotations</span></h1>
+
+<p>This is a basic website demonstrating some <span id="a2">awesome effects</span> that you can apply to text.</p>
+
+<p>You can <span id="a3">highlight</span> important terms, draw a <span id="a4">box</span> around things, or even <span id="a5">cross out</span> text you don't need anymore.</p>
+
+<p>Sometimes you just want to draw a <span id="a6">circle</span> around a word to make it stand out.</p>
+
+<div class="button-container">
+  <button class="btn-3d" id="replay-btn">Replay Animations</button>
+</div>
+
+<script type="module">
+  import { annotate, annotationGroup } from 'https://unpkg.com/rough-notation?module';
+
+  const a1 = annotate(document.querySelector('#a1'), { type: 'underline', color: 'var(--dark-pink)', strokeWidth: 4 });
+  const a2 = annotate(document.querySelector('#a2'), { type: 'highlight', color: 'var(--light-pink)' });
+  const a3 = annotate(document.querySelector('#a3'), { type: 'highlight', color: 'yellow' });
+  const a4 = annotate(document.querySelector('#a4'), { type: 'box', color: 'var(--primary-pink)', strokeWidth: 2 });
+  const a5 = annotate(document.querySelector('#a5'), { type: 'strike-through', color: 'black' });
+  const a6 = annotate(document.querySelector('#a6'), { type: 'circle', color: 'green', padding: 5 });
+
+  const ag = annotationGroup([a1, a2, a3, a4, a5, a6]);
+
+  // Show initially, wait a bit for css animations
+  setTimeout(() => {
+    ag.show();
+  }, 1000);
+
+  // Replay functionality
+  document.getElementById('replay-btn').addEventListener('click', () => {
+    // hide all first
+    a1.hide();
+    a2.hide();
+    a3.hide();
+    a4.hide();
+    a5.hide();
+    a6.hide();
+
+    // allow a tiny delay so hide takes effect before showing again
+    setTimeout(() => {
+      ag.show();
+    }, 100);
+  });
+</script>
 
 </body>
 </html>
